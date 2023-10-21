@@ -19,9 +19,12 @@ import "game/scenes/fleet-scene-ship"
 import "game/scenes/formation-scene"
 --game
 import "game/fleet-service"
+import "game/font-service"
 import "game/input-service"
 import "game/math-service"
 import "game/names-service"
+import "game/ship-button-factory"
+import "game/ship-button"
 import "game/ship-classes"
 import "game/ship-factory"
 import "game/ship"
@@ -74,15 +77,21 @@ services
     :as(ServiceLifetimes.singleton)
 
 i_FleetService = "iFleetService"
+i_FontService = "iFontService"
 i_InputService = "iInputService"
 i_MathService = "iMathService"
 i_NamesService = "iNamesService"
-i_FontService = "iFontService"
+i_ShipButtonFactory = "iShipButtonFactory"
+i_ShipButton = "iShipButton"
 i_ShipFactory = "iShipFactory"
 i_Ship = "iShip"
 services
     :register(cls_FleetService)
     :to(i_FleetService)
+    :as(ServiceLifetimes.singleton)
+services
+    :register(cls_FontService)
+    :to(i_FontService)
     :as(ServiceLifetimes.singleton)
 services
     :register(cls_InputService)
@@ -97,9 +106,13 @@ services
     :to(i_NamesService)
     :as(ServiceLifetimes.singleton)
 services
-    :register(cls_FontService)
-    :to(i_FontService)
+    :register(cls_ShipButtonFactory)
+    :to(i_ShipButtonFactory)
     :as(ServiceLifetimes.singleton)
+services
+    :register(cls_ShipButton)
+    :to(i_ShipButton)
+    :as(ServiceLifetimes.transient)
 services
     :register(cls_ShipFactory)
     :to(i_ShipFactory)

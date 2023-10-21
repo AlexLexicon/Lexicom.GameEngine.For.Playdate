@@ -6,20 +6,24 @@ function ShipButton:init(container, ship)
     self.gfx = container:get(i_Graphics)
     self.fontService = container:get(i_FontService)
 
+    self.visibleAtOnce = 3
+    self.padding = 15
+
     self.ship = ship
     self.sprite = nil
+    self.buttonWidth = nil
+    self.buttonHeight = nil
 
-    local screenWidth = self.dis.getWidth()
-    local screenHeight = self.dis.getHeight()
-
-    self.visibleAtOnce = 3
-
-    self.padding = 15
-    self.buttonWidth = screenWidth - self.padding * 2
-    self.buttonHeight = (screenHeight - (self.padding * (2 + self.visibleAtOnce - 1))) / (self.visibleAtOnce + 1)
+    self:render()
 end
 
 function ShipButton:render()
+    local screenWidth = self.dis.getWidth()
+    local screenHeight = self.dis.getHeight()
+
+    self.buttonWidth = screenWidth - self.padding * 2
+    self.buttonHeight = (screenHeight - (self.padding * (2 + self.visibleAtOnce - 1))) / (self.visibleAtOnce + 1)
+
     local image = self.gfx.image.new(self.buttonWidth, self.buttonHeight, self.gfx.kColorWhite)
     local font = self.fontService:getFont()
 
