@@ -1,0 +1,38 @@
+--[[cls_Enemy = "Enemy";
+class(cls_Enemy).extends()
+
+local enemyIndex = 0
+
+function Enemy:init(container)
+
+    enemyIndex = enemyIndex + 1
+
+    self.pd = container:get(i_Playdate)
+    self.name = "enemy "..tostring(enemyIndex)
+
+    local gfx = container:get(i_Graphics)
+
+    local image = gfx.image.new(50, 50, gfx.kColorWhite)
+    gfx.pushContext(image)
+    gfx.setColor(gfx.kColorBlack)
+    gfx.fillEllipseInRect(0, 0, 50, 50)
+    gfx.popContext()
+
+    self.sprite = gfx.sprite.new(image)
+    self.sprite:moveTo(100, 100)
+    self.sprite:add()
+
+    setmetatable(self, {__gc = function ()
+        self.sprite:remove()
+    end})
+end
+
+function Enemy:update()
+    if self.pd.buttonJustReleased(pd.kButtonA) then
+        self:Destroy()
+    end
+end
+
+function Enemy:Destroy()
+    
+end]]--

@@ -1,0 +1,18 @@
+--[[cls_DrawingService = "DrawingService";
+class(cls_DrawingService).extends()
+
+function DrawingService:init(container)
+    self.container = container
+end
+
+function DrawingService:update()
+    local entities = self.container:getAllExisting(i_Entity)
+
+    local count = 1
+    for key, entity in pairs(entities) do
+        print(tostring(count)..": ["..tostring(key).."]"..tostring(entity.name))
+        count = count + 1
+
+        
+    end
+end]]--

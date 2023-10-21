@@ -1,0 +1,15 @@
+--[[cls_Player = "Player";
+class(cls_Player).extends()
+
+local playerIndex = 0
+
+function Player:init(container)
+
+    playerIndex = playerIndex + 1
+
+    self.name = "player "..tostring(playerIndex)
+end
+
+function Player:update()
+    
+end]]--

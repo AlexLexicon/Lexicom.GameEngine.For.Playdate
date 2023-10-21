@@ -1,0 +1,10 @@
+--[[cls_RenderingService = "RenderingService"
+class(cls_RenderingService).extends()
+
+function RenderingService:init(container)
+    
+end
+
+function RenderingService:render(entity)
+    
+end]]--
